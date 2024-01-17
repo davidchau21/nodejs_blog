@@ -1,7 +1,7 @@
 class NewController {
     // [GET] /news
     index(req, res) {
-        res.render('home');
+        res.render('news');
     }
 
     // [GET] /:slug
