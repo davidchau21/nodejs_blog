@@ -6,7 +6,7 @@ class NewController {
 
     // [GET] /:slug
     show(req, res) {
-        res.send('New Detail')
+        res.send('New Detail');
     }
 }
 
