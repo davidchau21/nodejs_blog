@@ -16,7 +16,7 @@
           <option value="delete">Xóa</option>
         </select>
 
-        <button class="btn btn-primary btn-sm check-all-submit-btn disabled">Áp dụng</button>
+        <button class="btn btn-primary btn-sm check-all-submit-btn" disabled>Áp dụng</button>
       </div>
     </div>
     <table class="table mt-4">
@@ -84,11 +84,12 @@
     document.addEventListener('DOMContentLoaded', function() {
         var courseId;
         var deleteForm = document.forms['delete-course-form'];
+        //var containerForm = document.forms['container-form'];
+        var containerForm = $('form[name="container-form"]');
         var btnDeleteCourse = document.getElementById('btn-delete-course');
         var checkboxAll = $('#checkbox-all');
         var courseItemCheckbox = $('input[name="courseIds[]"]');
         var checkAllSubmitBtn = $('.check-all-submit-btn');
-        var containerForm = document.forms['container-form'];
 
         $('#delete-course-modal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) 
@@ -115,21 +116,13 @@
         renderCheckAllSubmitBtn();
       });
 
-      //check all submit buttons clicked
-      checkAllSubmitBtn.on('submit', function(e) {
-        var isSubmittable = !$(this).hasClass('disabled');
-        if (isSubmittable) {
-          e.preventDefault();
-        }
-      });
-
       //Re render 
       function renderCheckAllSubmitBtn(){
         var checkedCount = $('input[name="courseIds[]"]:checked').length;
         if(checkedCount > 0){
-          checkAllSubmitBtn.removeClass('disabled');
+          checkAllSubmitBtn.attr('disabled', false);
         }else{
-          checkAllSubmitBtn.addClass('disabled');
+          checkAllSubmitBtn.attr('disabled', true);
         }
       }
 
