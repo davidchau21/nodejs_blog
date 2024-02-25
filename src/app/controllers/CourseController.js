@@ -23,7 +23,7 @@ class CourseController {
     const course = new Course(req.body);
     course.save()
       .then(() => res.redirect('/me/stored/courses'))
-      .catch((error) => next(error));
+      .catch(next);
 
   }
 
